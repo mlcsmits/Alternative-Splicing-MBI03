@@ -27,6 +27,9 @@ python3 ~/regions.py
 bedtools intersect -abam ~/sorted/sorted_SRR197604${Nr[i]}.bam -b ~/RPKM/${Nr[i]}.bed > ~/sorted/subset_SRR197604${Nr[i]}.bam
 
 # Running rMATS
+Install rMATS using this link
+[https://github.com/Xinglab/rmats-turbo.git](https://github.com/Xinglab/rmats-turbo/tree/v4.2.0)
+
 To run the alternative splicing prediction, use rMATS, fill in the --b1 and --b2 depending on which samples you want to compare.
 
 python3 ~/rmats_turbo_v4_2_0/rmats.py --b1 ~/MS_or_SS.txt --b2 ~/MR_or_WT.txt --gtf ~/RefSeq/genomic.gtf -t paired --readLength 100 --nthread 5 --od ~/rmats_output/ --tmp ~/rmats_output/
@@ -37,6 +40,9 @@ To filter the significant reads with FDR<0.05 run this code:
 python3 ~/FDR.py ~/path/to/rmats_out/ ~/path/to/rmats_out_2/
 
 # Run rmats2sashimiplot
+Install rmats2sashimiplot using this link
+https://github.com/Xinglab/rmats2sashimiplot/tree/kutscherae-output-coords
+
 To visualise the sashimiplots of the exon skipping events from rMATS, run rmats2sashimiplot with the modified script for making coordinate files, fill in the --b1, --b2, --l1, and --l2 depending on which samples you want to compare.
 
 python3 rmats2sashimiplot-master/src/rmats2sashimiplot/rmats2sashimiplot.py --b1 ~/MS_or_SS.txt --b2 ~/MR_or_WT.txt -c ~/RefSeq/genomic.gff3 --group-info ~/group_M.gf --event-type SE -e ~/rmats_out_2/SE.MATS.JCEC.txt --l1 MS_or_SS --l2 MR_or_WT -o ~/plot_SE_out --intron_s 5
