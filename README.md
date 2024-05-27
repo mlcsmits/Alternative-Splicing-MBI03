@@ -18,6 +18,10 @@ python3 ~/extract.py
 
 python3 ~/Calculate_RPKM.py /path/to/extracted_counts/ /path/to/RPKM_calc/dir/
 
+To filter the genes with RPKM > 1 from the rest run this code:
+
+python3 ~/RPKM.py
+
 python3 ~/regions.py
 
 bedtools intersect -abam ~/sorted/sorted_SRR197604${Nr[i]}.bam -b ~/RPKM/${Nr[i]}.bed > ~/sorted/subset_SRR197604${Nr[i]}.bam
@@ -40,3 +44,8 @@ python3 rmats2sashimiplot-master/src/rmats2sashimiplot/rmats2sashimiplot.py --b1
 To count all the junctions in GST1-6 use the following rmats2sashimiplot script, fill in the --b1, --b2, --l1, and --l2 depending on which samples you want to compare.
 
 python3 rmats2sashimiplot-master/src/rmats2sashimiplot/rmats2sashimiplot.py --b1 ~/MS_or_SS.txt --b2 ~/MR_or_WT.txt --group-info ~/group_M.gf -c NW_001886736.1:+:73175:79227:/mnt/studentfiles/2024/2024MBI03/RefSeq/genomic.gff3 --l1 MS_or_SS --l2 MR_or_WT -o plot_JUNCTIONS --intron_s 5
+
+
+To give the coordinate files the same number as the pdf files of the sashimi plots run ReplaceNamesCoords.py
+
+python3 ~/ReplaceNamesCoords.py /path/to/Sashimi_plot/dir
